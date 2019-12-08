@@ -1,0 +1,23 @@
+{
+  "name": "apinode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "keywords": [],
+  "author": "Kimbelly",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "mysql": "^2.17.1",
+    "sequelize": "^5.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
