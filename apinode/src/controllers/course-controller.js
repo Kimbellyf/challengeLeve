@@ -1,21 +1,54 @@
 'use strict';
 
-exports.post = (req,res,next) =>{
-    res.status(201).send(req.body);
+
+class CourseController {
+    getCourses(req, res) {
+        Course.findAll()
+            .then(courses => res.json(courses))
+            .catch(err => {
+                console.log("Error in query (getCourses): " + err);
+                res.sendStatus(500);
+            });
+    }
+
+    getCourse(req, res) {
+        const { course_enrollment } = req.query;
+        Course.findOne({ where: { course_enrollment } })
+            .then(course => res.json(course))
+            .catch(err => {
+                console.log("Error in query (getCourse): " + err);
+                res.sendStatus(500);
+            });
+    }
+
+    createCourse(req, res) {
+        const { name } = req.body;
+        Course.create({ name })
+            .then(course => res.json(course))
+            .catch(err => {
+                console.log("Error in query (createCourse): " + err);
+                res.sendStatus(500);
+            });
+    }
+
+    updateCourse(req, res) {
+        const { course_enrollment, name} = req.body;
+        Course.update({ course_enrollment,name }, { where: { id } })
+            .then(() => res.sendStatus(200))
+            .catch(err => {
+                console.log("Error in query (updateCourse): " + err);
+                res.sendStatus(500);
+            });
+    }
+    deleteCourse(req,res){
+        const { course_enrollment } = req.query;
+        Course.destroy( { where: { course_enrollment } })
+            .then(() => res.sendStatus(200))
+            .catch(err => {
+                console.log("Error in query (deleteCourse): " + err);
+                res.sendStatus(500);
+            });
+    }
 }
-exports.get('/',(req,res,next) =>{
-    res.status(200).send({
-        title: "Node Store API",
-        version :"0.0.1"
-    });
-});
-exports.put('/:id',(req,res,next) =>{
-    const id = req.params.id;
-    res.status(201).send({
-        id:id,
-        item: req.body
-    });
-});
-exports.delete('/',(req,res,next) =>{
-    res.status(200).send(req.body);
-})
+
+module.exports = new CourseController();

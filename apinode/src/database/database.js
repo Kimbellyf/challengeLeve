@@ -1,10 +1,7 @@
 const Sequelize = require("sequelize");
-const fs = require("fs");
 
-const dbConfig = JSON.parse(fs.readFileSync(__dirname + "/settings.json", "utf-8"));
-
-const db = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
-    host: "localhost",
+const db = new Sequelize('mydb', "root", "", {
+    host: "127.0.0.1",
     dialect: "mysql"
 });
 

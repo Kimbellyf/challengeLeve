@@ -2,12 +2,23 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/person-controller');
-
-router.post('/',controller.post);
-router.get('/', controller.get);
-router.put('/:id',controller.put);
-router.del('/',controller.del);
+const personController = require('../controllers/person-controller');
 
 
-module.exports = Router;
+// get all people
+router.get("/person", personController.getPeople);
+
+// get specific person
+router.get("/person/username?:username", personController.getPerson);
+
+// insert new person
+router.post("/person", personController.createPerson);
+
+// update person
+router.put("/person", personController.updatePerson);
+
+// delete person
+router.delete("/person", personController.deletePerson);
+
+
+module.exports = router;

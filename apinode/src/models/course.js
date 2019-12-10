@@ -7,11 +7,8 @@ const Course = db.define(
         name: {
             type: Sequelize.STRING(60)
         },
-        status:{
-            type: Sequelize.STRING(10)
-        } ,
-        enrollment_course_code: {
-            type: Sequelize.STRING(11)
+        course_enrollment: {
+            type: Sequelize.INT,
         }
     },
     {

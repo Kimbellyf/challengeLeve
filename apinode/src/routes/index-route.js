@@ -11,4 +11,4 @@ const route = router.get('/',(req,res,next) =>{
 });
 
 
-module.exports = Router;
+module.exports = route;
