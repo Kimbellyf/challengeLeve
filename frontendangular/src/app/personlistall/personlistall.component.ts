@@ -2,24 +2,24 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { CourselistDataSource, CourselistItem } from './courselist-datasource';
+import { PersonlistallDataSource, PersonlistallItem } from './personlistall-datasource';
 
 @Component({
-  selector: 'app-courselist',
-  templateUrl: './courselist.component.html',
-  styleUrls: ['./courselist.component.css']
+  selector: 'app-personlistall',
+  templateUrl: './personlistall.component.html',
+  styleUrls: ['./personlistall.component.css']
 })
-export class CourselistComponent implements AfterViewInit, OnInit {
+export class PersonlistallComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<CourselistItem>;
-  dataSource: CourselistDataSource;
+  @ViewChild(MatTable, {static: false}) table: MatTable<PersonlistallItem>;
+  dataSource: PersonlistallDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
   ngOnInit() {
-    this.dataSource = new CourselistDataSource();
+    this.dataSource = new PersonlistallDataSource();
   }
 
   ngAfterViewInit() {

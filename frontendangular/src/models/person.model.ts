@@ -1,7 +1,9 @@
 export class Person{
     constructor(
+        //private id: number,
+        public id: number,
         public name: string,
-        public title: string,
-        public done: boolean,
+        public cpf: string,
+        public telephone: string,
     ){}
 }

@@ -1,0 +1,16 @@
+<div>
+    <h3>Editar pessoa</h3>
+  </div>
+  <form class="example-container" [formGroup]="personForm" (ngSubmit)="updatePerson(personForm.value)">
+    <mat-form-field>
+      <input matInput name="name_person" placeholder="Nome da pessoa" formControlName="name_person">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea  matInput name="cpf_person" placeholder="cpf da pessoa" formControlName="cpf_person"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="telephone_person" placeholder="Telefone da pessoa" formControlName="telephone_person">
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!personForm.valid" mat-button color="primary" >Editar</button>
+  </form>
