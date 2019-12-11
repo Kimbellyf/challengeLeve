@@ -1,5 +1,5 @@
 'use strict';
-
+const Teacher = require("../models/teacher");
 
 class TeacherController {
     getTeachers(req, res) {

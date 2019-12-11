@@ -6,22 +6,22 @@ const studentController = require('../controllers/student-controller');
 
 
 // get all students
-router.get("/student", studentController.getStudents);
+router.get("/", studentController.getStudents);
 
 // get specific student
-router.get("/student/username?:username", studentController.getStudent);
+router.get("/student_enrollment?:student_enrollment", studentController.getStudent);
 
 // get specific student and your courses
 //router.get("/student/courses/", studentController.getStudent);
 
 // insert new student
-router.post("/student", studentController.createStudent);
+router.post("/", studentController.createStudent);
 
 // update student
-router.put("/student", studentController.updateStudent);
+router.put("/student_enrollment?:student_enrollment", studentController.updateStudent);
 
 // delete student
-router.delete("/student", studentController.deleteStudent);
+router.delete("/student_enrollment", studentController.deleteStudent);
 
 
 module.exports = router;

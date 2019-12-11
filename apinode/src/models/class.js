@@ -5,7 +5,7 @@ const Class = db.define(
     "Class",
     {
         class_code:{
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
@@ -13,7 +13,7 @@ const Class = db.define(
 
         } ,
         disc_code: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             allowNull: false,
             references: {         // User belongsTo Company 1:1
@@ -22,7 +22,7 @@ const Class = db.define(
               }
         },
         course_enrollment: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             allowNull: false,
         },

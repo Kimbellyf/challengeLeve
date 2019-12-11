@@ -5,24 +5,33 @@ const Student_course = db.define(
     "Student_course",
     {
         student_course_code:{
-            type: Sequelize.INT,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
             unique: true,
         },
         course_enrollment: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
+            validate:{
+                notEmpty:{
+                    msg: "Esse campo não pode ser vazio"
+                },
+            },
             references: {         // User belongsTo Company 1:1
                 model: 'Course',
                 key: 'course_enrollment'
               }
         },
         student_enrollment:{
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
-            allowNull: false,
+            validate:{
+                notEmpty:{
+                    msg: "Esse campo não pode ser vazio"
+                },
+            },
             references: {         // User belongsTo Company 1:1
                 model: 'Student',
                 key: 'student_enrollment'

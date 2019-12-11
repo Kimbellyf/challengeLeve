@@ -1,10 +1,10 @@
 'use strict';
-
+const Course = require("../models/course");
 
 class CourseController {
     getCourses(req, res) {
         Course.findAll()
-            .then(courses => res.json(courses))
+            .then(course => res.json(course))
             .catch(err => {
                 console.log("Error in query (getCourses): " + err);
                 res.sendStatus(500);

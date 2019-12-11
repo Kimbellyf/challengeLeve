@@ -5,14 +5,14 @@ const Student_class = db.define(
     "Student_class",
     {
         st_class_code:{
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,
             unique: true,
         },
         class_code: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             references: {         // User belongsTo Company 1:1
                 model: 'Class',

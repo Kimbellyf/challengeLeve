@@ -1,33 +1,44 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PersonComponent } from './personlistall/personlistall.component';
+import { PersonlistallComponent } from './personlistall/personlistall.component';
 import { PersonDetailComponent } from './persondetail/persondetail.component';
-import { NewPersonComponent } from './newperson/newperson.component';
+import { NewPersonComponent } from './new-person/new-person.component';
 import { PersonEditComponent } from './personedit/personedit.component';
+import {CourselistComponent} from './courselist/courselist.component';
 
 const routes: Routes = [
   {
-    path: 'pessoas',
-    component: PeopleComponent,
+    path: 'person',
+    component: PersonlistallComponent,
     data: { title: 'Lista de pessoas' }
   },
   {
-    path: 'person-detail/:id',
+    path: 'person/detail/:id',
     component: PersonDetailComponent,
     data: { title: 'Detalhe da pessoa' }
   },
   {
-    path: 'new-person',
+    path: 'person/new',
     component: NewPersonComponent,
     data: { title: 'Adicionar pessoa' }
   },
   {
-    path: 'produto-editar/:id',
-    component: ProdutoEditarComponent,
+    path: 'person/edit/:id',
+    component: PersonEditComponent,
     data: { title: 'Editar pessoa' }
   },
+  {
+    path: 'courses',
+    component: CourselistComponent,
+    data: { title: 'Cursos' }
+  },
+  /*{
+    path: 'courses/:course_enrollment',
+    component: CourseSpecificComponent,
+    data: { title: 'Cursos' }
+  },*/
   { path: '',
-    redirectTo: '/People',
+    redirectTo: '/Person',
     pathMatch: 'full'
   }
 ];
@@ -36,4 +47,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { };
+export const routingComponents = [PersonlistallComponent, PersonDetailComponent, PersonEditComponent,NewPersonComponent,CourselistComponent]

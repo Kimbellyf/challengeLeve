@@ -5,7 +5,7 @@ const Student = db.define(
     "Student",
     {
         student_enrollment:{
-            type: Sequelize.INT,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
             unique: true,
@@ -14,7 +14,7 @@ const Student = db.define(
                 model: 'Person',
                 key: 'id'
               }
-        },
+        }, 
         status_on:{
             type: Sequelize.BOOLEAN(),
         },

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonlistallComponent } from './personlistall/personlistall.component';
@@ -22,20 +22,32 @@ import {
   MatCardModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatSelectModule, } from '@angular/material';
+  MatSelectModule,
+  MatExpansionModule,
+  MatBadgeModule, } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-//import {PersonlistallComponent } from './personlistall/personlistall.component';
+import { NewPersonComponent } from './new-person/new-person.component';
 //import {PersonListComponent } from './personlist/personlist.component';
-//import {PersonDetailComponent } from './persondetail/persondetail.component';
-//import {PersonEditComponent } from './personedit/personedit.component';
+import {PersonDetailComponent } from './persondetail/persondetail.component';
+import {PersonEditComponent } from './personedit/personedit.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
 //import {CourseListComponent } from './courselist/courselist.component';
+import { NgxMaskModule } from 'ngx-mask';
+//import {routingComponents} from './app-routing.module';
+ 
 
 @NgModule({
   declarations: [
-    PersonlistallComponent,
     AppComponent,
+    PersonlistallComponent,
     CourselistComponent,
     HomeComponent,
+    NewPersonComponent,
+    PersonDetailComponent,
+    PersonEditComponent,
+    MainNavComponent,
+    routingComponents,
+    
 
   ],
   imports: [
@@ -56,8 +68,14 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,  
     MatInputModule,
     MatCardModule,
+    MatExpansionModule,
+    MatBadgeModule,
     MatProgressSpinnerModule, 
     MatSelectModule,
+    NgxMaskModule.forRoot({
+      validation: true,
+    }),
+   
     //HttpModule,
   ],
   providers: [],

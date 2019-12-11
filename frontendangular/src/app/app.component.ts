@@ -12,14 +12,10 @@ export class AppComponent {
 
   constructor(){
     this.people.push({
+      id:0,
       name: "Kim",
-      title:"Show",
-      done:false});
-    
-    this.people.push({
-        name:"Paulo",
-        title:"Show",
-        done:false});
+      cpf:"623433333",
+    telephone:"88888888"});
   }
   addPerson(){
 

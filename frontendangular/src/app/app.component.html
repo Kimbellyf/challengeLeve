@@ -1,13 +1,11 @@
-<div class="container">
-  <nav>
-  <a routerLink="/people" routerLinkActive="active">Produtos</a>
-  <a routerLink="/newperson" routerLinkActive="active">Novo Produto</a>
-  </nav>
-  <router-outlet></router-outlet>
-  <app-menu></app-menu>
-  <h1>Lista de pessoas</h1>
+<app-main-nav>
+    <a routerLink="/person" routerLinkActive="active">Pessoas</a>
+    <a routerLink="/person/new" routerLinkActive="active">Nova pessoa</a>
+</app-main-nav>
+<router-outlet></router-outlet>
+<a routerLink="/person" routerLinkActive="active">Pessoas</a>
+<a routerLink="/person/new" routerLinkActive="active">Nova pessoa</a>
+<app-personlistall></app-personlistall>
 
-<ul>
-    <li *ngFor="let person of people">{{person.name}}</li>
-</ul>
-</div>
+
+

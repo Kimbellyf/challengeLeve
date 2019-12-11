@@ -6,19 +6,20 @@ const personController = require('../controllers/person-controller');
 
 
 // get all people
-router.get("/person", personController.getPeople);
+router.get("/", personController.getPeople);
+
 
 // get specific person
-router.get("/person/username?:username", personController.getPerson);
+router.get("/cpf/", personController.getPerson);
 
 // insert new person
-router.post("/person", personController.createPerson);
+router.post("/", personController.createPerson);
 
 // update person
-router.put("/person", personController.updatePerson);
+router.put("/id", personController.updatePerson);
 
 // delete person
-router.delete("/person", personController.deletePerson);
+router.delete("/id", personController.deletePerson);
 
 
 module.exports = router;

@@ -6,11 +6,11 @@ import { Person } from 'src/models/person.model';
 
 @Component({
   selector: 'app-persondetail',
-  templateUrl: './produto-detalhe.component.html',
-  styleUrls: ['./produto-detalhe.component.scss']
+  templateUrl: './persondetail.component.html',
+  styleUrls: ['./persondetail.component.css']
 })
 export class PersonDetailComponent implements OnInit {
-  person: Person = { id: '', nome_produto: '', desc_produto: '', preco_produto: null, dt_atualizacao: null };
+  person: Person = { id: null, name: '', cpf: '', telephone: null };
   isLoadingResults = true;
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
 
@@ -19,7 +19,7 @@ export class PersonDetailComponent implements OnInit {
     this.getPerson(this.route.snapshot.params['id']);
   }
 
-  getProduto(id) {
+  getPerson(id) {
     this.api.getPerson(id)
       .subscribe(data => {
         this.person = data;
@@ -33,7 +33,7 @@ export class PersonDetailComponent implements OnInit {
     this.api.deletePerson(id)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/person']);
+          this.router.navigate(['/person/']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

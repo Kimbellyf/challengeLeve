@@ -1,8 +1,8 @@
 'use strict';
-
+const Student = require("../models/student");
 
 class StudentController {
-    getStudent(req, res) {
+    getStudents(req, res) {
         Student.findAll()
             .then(student => res.json(student))
             .catch(err => {
@@ -13,8 +13,8 @@ class StudentController {
 
     getStudent(req, res) {
         const { student_enrollment } = req.query;
-        User.findOne({ where: { student_enrollment } })
-            .then(user => res.json(user))
+        Student.findOne({ where: { student_enrollment } })
+            .then(student => res.json(student))
             .catch(err => {
                 console.log("Error in query (getStudent): " + err);
                 res.sendStatus(500);
@@ -22,9 +22,9 @@ class StudentController {
     }
 
     createStudent(req, res) {
-        const { student_enrollment, status_on, enr_date } = req.body;
-        User.create({ student_enrollment, status_on, enr_date })
-            .then(user => res.json(user))
+        const {status_on, enr_date } = req.body;
+        Student.create({ status_on, enr_date })
+            .then(Student => res.json(Student))
             .catch(err => {
                 console.log("Error in query (createStudent): " + err);
                 res.sendStatus(500);
@@ -33,7 +33,7 @@ class StudentController {
 
     updateStudent(req, res) {
         const { student_enrollment, status_on, enr_date } = req.body;
-        User.update({ student_enrollment, status_on, enr_date}, { where: { student_enrollment } })
+        Student.update({ student_enrollment, status_on, enr_date}, { where: { student_enrollment } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (updateStudent): " + err);
@@ -42,7 +42,7 @@ class StudentController {
     }
     deleteStudent(req,res){
         const { student_enrollment} = req.query;
-        User.destroy( { where: { student_enrollment } })
+        Student.destroy( { where: { student_enrollment } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (deleteStudent): " + err);

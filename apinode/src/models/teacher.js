@@ -5,7 +5,7 @@ const Teacher = db.define(
   "Teacher",
   {
       teacher_enrollment:{
-          type: Sequelize.INT,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           allowNull: false,
           unique: true,

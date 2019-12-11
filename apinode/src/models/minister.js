@@ -5,14 +5,14 @@ const Minister = db.define(
     "Minister",
     {
         minister_code:{
-            type: Sequelize.INT,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
             unique: true,
             autoIncrement: true,
         },
         teacher_enrollment:{
-            type: Sequelize.INT,
+            type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
             unique: true,
@@ -22,7 +22,7 @@ const Minister = db.define(
               }
         },
         class_code: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             allowNull: false,
             references: {         // User belongsTo Company 1:1

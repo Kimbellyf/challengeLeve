@@ -6,19 +6,19 @@ const teacherController = require('../controllers/teacher-controller');
 
 
 // get all teachers
-router.get("/teacher", teacherController.getTeachers);
+router.get("/", teacherController.getTeachers);
 
 // get specific teacher
-router.get("/teacher/username?:username", teacherController.getTeacher);
+router.get("/teacher_enrollment?:teacher_enrollment", teacherController.getTeacher);
 
 // insert new teacher
-router.post("/teacher", teacherController.createTeacher);
+router.post("/", teacherController.createTeacher);
 
 // update teacher
-router.put("/teacher", teacherController.updateTeacher);
+router.put("/teacher_enrollment?:teacher_enrollment", teacherController.updateTeacher);
 
 // delete teacher
-router.delete("/teacher", teacherController.deleteTeacher);
+router.delete("/teacherteacher_enrollment?:teacher_enrollment", teacherController.deleteTeacher);
 
 
 module.exports = router;

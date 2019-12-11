@@ -1,5 +1,7 @@
 'use strict';
-
+const Person = require("../models/person");
+const Student = require('../models/student')
+//const ValidationContract = require('../validators/tra');
 
 class PersonController {
     getPeople(req, res) {
@@ -14,26 +16,40 @@ class PersonController {
     getPerson(req, res) {
         const { cpf } = req.query;
         Person.findOne({ where: { cpf } })
-            .then(user => res.json(user))
+            .then(person => res.json(person))
             .catch(err => {
                 console.log("Error in query (getPerson): " + err);
                 res.sendStatus(500);
             });
     }
 
+
     createPerson(req, res) {
         const { name, cpf, telephone } = req.body;
-        User.create({ name, cpf, telephone })
-            .then(user => res.json(user))
+        var per=0;
+        Person.create({ name, cpf, telephone })
+            .then(person => res.json(person))
             .catch(err => {
                 console.log("Error in query (createPerson): " + err);
+                res.sendStatus(500);
+            });
+
+    }
+    createStudent(req, res) {
+        const {id} = req.body;
+        student_enrollment =id;
+        //const {student_enrollment,status_on, enr_date } = 
+        Student.create({ student_enrollment,status_on:true })
+            .then(Student => res.json(Student))
+            .catch(err => {
+                console.log("Error in query (createStudent): " + err);
                 res.sendStatus(500);
             });
     }
 
     updatePerson(req, res) {
         const { id, name, cpf, telephone } = req.body;
-        User.update({ id,name, cpf, telephone }, { where: { id } })
+        Person.update({ id,name, cpf, telephone }, { where: { id } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (updatePerson): " + err);
@@ -42,12 +58,16 @@ class PersonController {
     }
     deletePerson(req,res){
         const { id } = req.query;
-        User.destroy( { where: { id } })
+        Person.destroy( { where: { id } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (deletePerson): " + err);
                 res.sendStatus(500);
             });
+    }
+    RetiraMascara(ObjCPF) {
+        //if(("\" or "/") in ObjCPF){} "\"
+        return ObjCPF.value.replace(/\D/g, '');
     }
 }
 

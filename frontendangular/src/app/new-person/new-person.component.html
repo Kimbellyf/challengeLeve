@@ -1,0 +1,19 @@
+<mat-card>
+
+<div>
+        <h3 color="grey">Adicionar nova pessoa</h3>
+      </div>
+      <form class="example-container" [formGroup]="personForm" (ngSubmit)="addperson(personForm.value)">
+        <mat-form-field>
+          <input matInput name="name" placeholder="Nome da pessoa:" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea  matInput name="cpf" placeholder="CPF da pessoa" mask="000.000.000.000/00" formControlName="cpf"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="telephone" placeholder="Telefone da pessoa" mask="(00)00000-0000" formControlName="telephone">
+        </mat-form-field>
+      
+        <button type="submit" [disabled]="!personForm.valid" mat-button color="danger" >Adicionar</button>
+      </form>
+</mat-card>

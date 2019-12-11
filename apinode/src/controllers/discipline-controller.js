@@ -1,5 +1,5 @@
 'use strict';
-
+const Discipline = require("../models/discipline");
 
 class DisciplineController {
     getDisciplines(req, res) {
@@ -12,8 +12,8 @@ class DisciplineController {
     }
 
     getDiscipline(req, res) {
-        const { Disciplinename } = req.query;
-        Discipline.findOne({ where: { Disciplinename } })
+        const { disc_code} = req.query;
+        Discipline.findOne({ where: { disc_code } })
             .then(Discipline => res.json(Discipline))
             .catch(err => {
                 console.log("Error in query (getDiscipline): " + err);
@@ -22,8 +22,8 @@ class DisciplineController {
     }
 
     createDiscipline(req, res) {
-        const { name, birthdate, admin, Disciplinename, email, password } = req.body;
-        Discipline.create({ name, birthdate, admin, Disciplinename, email, password })
+        const { content ,teacher_enrollment } = req.body;
+        Discipline.create({ content ,teacher_enrollment })
             .then(Discipline => res.json(Discipline))
             .catch(err => {
                 console.log("Error in query (createDiscipline): " + err);
@@ -32,8 +32,8 @@ class DisciplineController {
     }
 
     updateDiscipline(req, res) {
-        const { id, name, birthdate, admin, Disciplinename, email, password } = req.body;
-        Discipline.update({ name, birthdate, admin, Disciplinename, email, password }, { where: { id } })
+        const { disc_code,content ,teacher_enrollment } = req.body;
+        Discipline.update({ disc_code,content ,teacher_enrollment }, { where: { disc_code } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (updateDiscipline): " + err);
@@ -41,8 +41,8 @@ class DisciplineController {
             });
     }
     deleteDiscipline(req,res){
-        const { id } = req.query;
-        Discipline.destroy( { where: { id } })
+        const { disc_code } = req.query;
+        Discipline.destroy( { where: { disc_code } })
             .then(() => res.sendStatus(200))
             .catch(err => {
                 console.log("Error in query (deleteDiscipline): " + err);

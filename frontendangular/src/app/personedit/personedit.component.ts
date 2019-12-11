@@ -6,7 +6,7 @@ import { ApiService } from 'src/service/api.service';
 @Component({
   selector: 'app-personedit',
   templateUrl: './personedit.component.html',
-  styleUrls: ['./personedit.component.scss']
+  styleUrls: ['./personedit.component.css']
 })
 export class PersonEditComponent implements OnInit {
   id: number = null;
@@ -42,7 +42,19 @@ updatePerson(form: NgForm) {
   this.api.updatePerson(this.id, form)
     .subscribe(res => {
         this.isLoadingResults = false;
-        this.router.navigate(['/person/detail/' + this.id]);
+        this.router.navigate(['/person/' + this.id]);
+      }, (err) => {
+        console.log(err);
+        this.isLoadingResults = false;
+      }
+    );
+}
+deletePerson(id) {
+  this.isLoadingResults = true;
+  this.api.deletePerson(id)
+    .subscribe(res => {
+        this.isLoadingResults = false;
+        this.router.navigate(['/person/'+ this.id]);
       }, (err) => {
         console.log(err);
         this.isLoadingResults = false;

@@ -5,7 +5,7 @@ const Discipline = db.define(
     "discipline",
     {
         disc_code: {
-            type: Sequelize.INT(11),
+            type: Sequelize.INTEGER(11),
             primaryKey: true,
             autoIncrement: true,
             allowNull: false,

@@ -16,7 +16,7 @@ export class CourselistComponent implements AfterViewInit, OnInit {
   dataSource: CourselistDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['course_enrollment', 'name'];
 
   ngOnInit() {
     this.dataSource = new CourselistDataSource();

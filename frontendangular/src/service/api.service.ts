@@ -9,7 +9,10 @@ import {Course} from '../models/course.model';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:5000/api/Person';
+const apiUrl = 'http://localhost:3000/Person';
+const apiUrlCourse = 'http://localhost:3000/Course';
+const apiUrlStudentCourse = "http://localhost:3000/student/"
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +24,7 @@ export class ApiService {
   getPersons (): Observable<Person[]> {
     return this.http.get<Person[]>(apiUrl)
       .pipe(
-        tap(people => console.log('leu as pessoas')),
+        tap(person => console.log('leu as pessoas')),
         catchError(this.handleError('getPeople', []))
       );
   }
@@ -29,7 +32,7 @@ export class ApiService {
   getPerson(id: number): Observable<Person> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Person>(url).pipe(
-      tap(_ => console.log(`leu o Person id=${id}`)),
+      tap(person => console.log(`leu o Person id=${id}`)),
       catchError(this.handleError<Person>(`getPerson id=${id}`))
     );
   }
@@ -37,7 +40,7 @@ export class ApiService {
   addPerson (Person): Observable<Person> {
     return this.http.post<Person>(apiUrl, Person, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
-      tap((person: Person) => console.log(`adicionou o Person com w/ id=${person._id}`)),
+      tap((person: Person) => console.log(`adicionou o Person com w/ id=${person.id}`)),
       catchError(this.handleError<Person>('addPerson'))
     );
   }
@@ -51,7 +54,7 @@ export class ApiService {
   }
 
   deletePerson (id): Observable<Person> {
-    const url = `${apiUrl}/delete/${id}`;
+    const url = `${apiUrl}/${id}`;
 
     return this.http.delete<Person>(url, httpOptions).pipe(
       tap(_ => console.log(`remove o Person com id=${id}`)),
@@ -67,4 +70,34 @@ export class ApiService {
       return of(result as T);
     };
   }
+  getCourses (): Observable<Course[]> {
+    return this.http.get<Course[]>(apiUrlCourse)
+      .pipe(
+        tap(course => console.log('leu os cursos')),
+        catchError(this.handleError('getCursos', []))
+      );
+  }
+  getStudentCourses(student_enrollment: number): Observable<Person> {
+    const url = `${apiUrlStudentCourse}/${student_enrollment}`;
+    return this.http.get<Person>(url).pipe(
+      tap(_ => console.log(`leu o Person id=${student_enrollment}`)),
+      catchError(this.handleError<Person>(`getPerson id=${student_enrollment}`))
+    );
+  }
+  /*
+  deleteStudentCourses (student_enrollment: number,course_enrollment:number): Observable<Person> {
+    const url = `${apiUrlStudentCourse}/${id}`;
+
+    return this.http.delete<Person>(url, httpOptions).pipe(
+      tap(_ => console.log(`remove o Person com id=${id}`)),
+      catchError(this.handleError<Person>('deletePerson'))
+    );
+  }
+  updateStudentCourses(id, Person): Observable<any> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.put(url, Person, httpOptions).pipe(
+      tap(_ => console.log(`atualiza a pessoa com id=${id}`)),
+      catchError(this.handleError<any>('updatePerson'))
+    );
+  } */
 }
