@@ -1,8 +1,8 @@
 <mat-card>
-
 <div>
-        <h3 color="grey">Adicionar nova pessoa</h3>
-      </div>
+<div>
+  <h3 color="grey">Adicionar nova pessoa</h3>
+</div>
       <form class="example-container" [formGroup]="personForm" (ngSubmit)="addperson(personForm.value)">
         <mat-form-field>
           <input matInput name="name" placeholder="Nome da pessoa:" formControlName="name">
@@ -16,4 +16,8 @@
       
         <button type="submit" [disabled]="!personForm.valid" mat-button color="danger" >Adicionar</button>
       </form>
+</div>
+<h4>Selecione os cursos que quer atrelar:</h4>
+      <app-courselistcheckbox></app-courselistcheckbox>
+     
 </mat-card>

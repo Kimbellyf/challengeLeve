@@ -9,7 +9,7 @@ import {Course} from '../models/course.model';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:3000/Person';
+const apiUrl = 'http://localhost:3000/Person/';
 const apiUrlCourse = 'http://localhost:3000/Course';
 const apiUrlStudentCourse = "http://localhost:3000/student/"
 
@@ -32,7 +32,7 @@ export class ApiService {
   getPerson(id: number): Observable<Person> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Person>(url).pipe(
-      tap(person => console.log(`leu o Person id=${id}`)),
+      tap(person=> console.log(`leu o Person id=${id}`)),
       catchError(this.handleError<Person>(`getPerson id=${id}`))
     );
   }

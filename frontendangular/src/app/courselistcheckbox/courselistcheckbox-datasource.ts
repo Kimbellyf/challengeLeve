@@ -3,29 +3,33 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {MatTableDataSource} from '@angular/material/table';
 
 // TODO: Replace this with your own data model type
-export interface PersonlistallItem {
+export interface CourselistcheckboxItem {
   name: string;
   id: number;
-  cpf: string,
-  telephone: string,
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: PersonlistallItem[] = [
-  {id: 1, name: 'Hydrogen', cpf:"999999992",telephone:"777777777"},
-  {id: 2, name: 'Helium',cpf:"99922222999", telephone:"777777777"},
+const EXAMPLE_DATA: CourselistcheckboxItem[] = [
+  {id: 1, name: 'Hydrogen'},
+  {id: 2, name: 'Helium'},
+  {id: 3, name: 'Lithium'},
+  {id: 4, name: 'Beryllium'},
+  {id: 5, name: 'Boron'},
+  {id: 6, name: 'Carbon'},
+  {id: 7, name: 'Nitrogen'},
+  {id: 8, name: 'Oxygen'},
+
 ];
 
 /**
- * Data source for the Personlistall view. This class should
+ * Data source for the Courselistcheckbox view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class PersonlistallDataSource extends DataSource<PersonlistallItem> {
-  data: PersonlistallItem[] = EXAMPLE_DATA;
+export class CourselistcheckboxDataSource extends DataSource<CourselistcheckboxItem> {
+  data: CourselistcheckboxItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -38,7 +42,7 @@ export class PersonlistallDataSource extends DataSource<PersonlistallItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<PersonlistallItem[]> {
+  connect(): Observable<CourselistcheckboxItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -62,7 +66,7 @@ export class PersonlistallDataSource extends DataSource<PersonlistallItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: PersonlistallItem[]) {
+  private getPagedData(data: CourselistcheckboxItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -71,7 +75,7 @@ export class PersonlistallDataSource extends DataSource<PersonlistallItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: PersonlistallItem[]) {
+  private getSortedData(data: CourselistcheckboxItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -90,12 +94,4 @@ export class PersonlistallDataSource extends DataSource<PersonlistallItem> {
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
-export class TableFilteringExample {
-  displayedColumns: string[] = ['id', 'name', 'cpf', 'telephone'];
-  dataSource = new MatTableDataSource(EXAMPLE_DATA);
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 }

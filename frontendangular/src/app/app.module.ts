@@ -33,6 +33,7 @@ import {PersonEditComponent } from './personedit/personedit.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 //import {CourseListComponent } from './courselist/courselist.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { CourselistcheckboxComponent } from './courselistcheckbox/courselistcheckbox.component';
 //import {routingComponents} from './app-routing.module';
  
 
@@ -47,6 +48,7 @@ import { NgxMaskModule } from 'ngx-mask';
     PersonEditComponent,
     MainNavComponent,
     routingComponents,
+    CourselistcheckboxComponent,
     
 
   ],

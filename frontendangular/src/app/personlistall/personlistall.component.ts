@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PersonlistallDataSource, PersonlistallItem } from './personlistall-datasource';
 import { ApiService } from 'src/service/api.service';
+//import { Observable } from 'rxjs/Observable';
 import {Person} from 'src/models/person.model'
 
 @Component({
@@ -14,13 +15,13 @@ import {Person} from 'src/models/person.model'
 export class PersonlistallComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<PersonlistallItem>;
+  @ViewChild(MatTable, {static: false}) table: MatTable<Person>;
   //dataSource: PersonlistallDataSource;
-
+  dataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name' ,'cpf'];
+  displayedColumns = ['id', 'name' ,'cpf','telephone'];
 
-  dataSource: Person[];
+  //dataSource: Person[];
   isLoadingResults = true;
   constructor( private _api: ApiService) { }
 
@@ -28,7 +29,9 @@ export class PersonlistallComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this._api.getPersons()
     .subscribe(res => {
-      this.dataSource = res;
+      //this.dataSource = new PersonlistallDataSource();
+      this.dataSource = new MatTableDataSource(res);
+      //this.dataSource = res;
       console.log(this.dataSource);
       this.isLoadingResults = false;
     }, err => {
@@ -36,11 +39,10 @@ export class PersonlistallComponent implements AfterViewInit, OnInit {
       this.isLoadingResults = false;
     });
   }
-    //this.dataSource = new PersonlistallDataSource();
 
   ngAfterViewInit() {
-    //this.dataSource.sort = this.sort;
-    //this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
 }

@@ -33,7 +33,7 @@ export class NewPersonComponent implements OnInit {
       .subscribe(res => {
           const id = res['id'];
           this.isLoadingResults = false;
-          this.router.navigate(['/person/', id]);
+          this.router.navigate(['/person']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;
