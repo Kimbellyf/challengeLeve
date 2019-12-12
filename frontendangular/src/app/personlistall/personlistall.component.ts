@@ -19,7 +19,7 @@ export class PersonlistallComponent implements AfterViewInit, OnInit {
   //dataSource: PersonlistallDataSource;
   dataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name' ,'cpf','telephone'];
+  displayedColumns = ['id', 'name' ,'cpf','telephone',"action"];
 
   //dataSource: Person[];
   isLoadingResults = true;

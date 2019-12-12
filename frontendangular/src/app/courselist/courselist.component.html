@@ -1,26 +1,42 @@
-<h3>Lista de cursos</h3>
 <div class="mat-elevation-z8">
-    <table mat-table class="full-width-table" matSort aria-label="Elements" >
-      <!-- Id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+  <h3>Lista de cursos:</h3>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+      <button mat-raised-button color="accent"><a routerLink="/person/new" routerLinkActive="active">Novo curso</a></button>
+  <table mat-table [dataSource]="dataSource" class="full-width-table" matSort aria-label="Elements" >
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id do curso</th>
+      <td mat-cell *matCellDef="let row">{{row.course_enrollment}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header   >CPF</th>
+        <td mat-cell *matCellDef="let row" mask="000.000.000.000/00">{{row.cpf}}</td>
       </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
-        <td mat-cell *matCellDef="let row">{{row.name}}</td>
-      </ng-container>    
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator #paginator
-        [length]="dataSource?.data.length"
-        [pageIndex]="0"
-        [pageSize]="50"
-        [pageSizeOptions]="[25, 50, 100, 250]">
-    </mat-paginator>
-  </div>
+    
+        <!-- Name Column -->
+    <ng-container matColumnDef="telephone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header   >Telefone</th>
+        <td mat-cell *matCellDef="let row" mask="000.000.000.000/00">{{row.telephone}}</td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>

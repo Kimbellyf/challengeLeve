@@ -7,20 +7,22 @@
       <button mat-flat-button color="accent" [routerLink]="['/person']"><mat-icon>list</mat-icon> Voltar</button>
     </div>
     <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title><h2>{{person.name}}</h2></mat-card-title>
-        <mat-card-subtitle >{{person.cpf}}</mat-card-subtitle>
+        <h2>Dados da pessoa:</h2>
+      <mat-card-header><h2>{{person.name}}</h2>
       </mat-card-header>
       <mat-card-content>
         <dl>
-          <dt>X:</dt>
-          <dd>{{person.name}}</dd>
+          <legend>Nome:</legend><dd>{{person.name}}</dd>
+          <legend>CPF:</legend><dd>{{person.cpf}}</dd>
+          <legend>Telefone:</legend><dd>{{person.telephone}}</dd>
+
           <dt>Atualizado em:</dt>
           <dd>{{person.id | date: 'dd/MM/yyyy'}}</dd>
         </dl>
+        <h3>Perfil estudante:</h3>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" class="teste" [routerLink]="['/person-editar', person._id]"><mat-icon>Editar</mat-icon> Editar</button>
+        <button mat-flat-button color="primary" class="teste" [routerLink]="['/person/edit/', person._id]"><mat-icon>Editar</mat-icon> Editar</button>
         <button mat-flat-button color="warn" (click)="deleteperson(person._id)"><mat-icon>Deletar</mat-icon> Excluir</button>
       </mat-card-actions>
     </mat-card>
