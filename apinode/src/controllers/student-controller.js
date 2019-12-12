@@ -22,8 +22,8 @@ class StudentController {
     }
 
     createStudent(req, res) {
-        const {status_on, enr_date } = req.body;
-        Student.create({ status_on, enr_date })
+        const {student_enrollment,status_on, enr_date } = req.body;
+        Student.create({ student_enrollment,status_on, enr_date })
             .then(Student => res.json(Student))
             .catch(err => {
                 console.log("Error in query (createStudent): " + err);
